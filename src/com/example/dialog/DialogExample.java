@@ -18,6 +18,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
+import com.vaadin.ui.themes.ValoTheme;
 
 @SuppressWarnings("serial")
 @Theme("dialog-example")
@@ -39,6 +40,7 @@ public class DialogExample extends UI {
 									ContentMode.HTML) {
 								{
 									setSizeUndefined();
+									addStyleName("v-panel-caption");
 								}
 							});
 							addComponent(textField("Email"));

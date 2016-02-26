@@ -58,7 +58,44 @@
   	position: absolute;
   	top: 0;
   	left: 50%;
-  	margin-top: -20px;
-  	margin-left: -20px;
+    margin-top: -40px;
+    margin-left: -40px;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .v-textfield {
+  	width: initial;
+  }
+  
+  .v-label {
+  	width: 100%;
+  	text-align: center;
+  }
+  
+  h1 {
+  	font-weight: bold;
+  	font-size: 1rem;
+  	margin: 0;
+  	line-height: 1.4;
+  }
+  
+  header {
+  	margin-top: 3rem;
+  	margin-bottom: 1rem;
+  	
+    & > p {
+  	  font-size: .8rem;
+  	  font-weight: bold;
+  	  opacity: .8;
+  	  margin: 0;
+  	  line-height: 1.4;
+    }
+  }
+  
+  .v-window-closebox {
+  	background: transparent;
+  	left: 0;
+  	right: initial;
   }
 }
