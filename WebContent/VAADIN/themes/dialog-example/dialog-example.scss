@@ -41,17 +41,26 @@
   	overflow: visible !important;
   }
 
-  .v-csslayout > * {
-  	width: 100%;
-  	height: initial;
+  .v-textfield {
+  	width: 5em;
   }
-  
-  .vertical > * {
-  	display: block;
+
+  .vertical {
+  	display: flex;
+  	flex-direction: column;
+  	
+  	& > * {
+	  width: 100%;  	
+  	}
   }
   
   .horizontal {
   	display: flex;
+  	
+  	& > * {
+  	  flex-grow: 1;
+  	  flex-shrink: 1;
+  	}
   }
   
   .v-window {
@@ -82,10 +91,10 @@
   }
   
   .content-area {
-  	padding: 1rem 2rem;
+  	padding: 1.5rem 2rem;
   	
   	& > * {
-  	  margin: 1rem 0;
+  	  margin: .5rem 0;
   	}
   }
 
@@ -118,7 +127,6 @@
   }
   
   .v-label {
-  	width: 100%;
   	text-align: center;
   }
   
