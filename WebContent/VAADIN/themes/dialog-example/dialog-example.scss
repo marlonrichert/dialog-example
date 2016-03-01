@@ -97,6 +97,27 @@
   	  margin: .5rem 0;
   	}
   }
+  
+  :root & .v-checkbox > input,
+  :root & .v-checkbox > input ~ label:before, 
+  :root & .v-checkbox > input ~ label:after {
+  	top: 8px;
+  	left: 9px;
+  }
+  
+  .v-checkbox {
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    padding: .5rem;
+    
+    :root & > input {
+      margin: 3px;
+    }
+    
+    > label {
+      margin-left: 9px;
+    }
+  }
 
   .v-csslayout-v-component-group > .v-widget {
   	margin-left: 0;
