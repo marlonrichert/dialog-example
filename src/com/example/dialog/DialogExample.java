@@ -23,6 +23,12 @@ import com.vaadin.ui.themes.ValoTheme;
 @SuppressWarnings("serial")
 @Theme("dialog-example")
 public class DialogExample extends UI {
+	private static final String V_COMPONENT_GROUP = "v-component-group";
+
+	private static final String BLOCK = "block";
+
+	private static final String VERTICAL = "vertical";
+
 	Window window = new Window() {
 		{
 			setResizable(false);
@@ -31,9 +37,9 @@ public class DialogExample extends UI {
 			setContent(new CssLayout() {
 				{
 					addComponent(new Image(null, new ThemeResource("icon-beta.png")));
-					addComponent(new VerticalLayout() {
+					addComponent(new CssLayout() {
 						{
-							setSizeUndefined();
+							addStyleName(VERTICAL);
 
 							addComponent(new Label(
 									"<header><h1>September golf trip</h1><p>Robert Trent Jones Golf Trail</p></header>",
@@ -43,24 +49,34 @@ public class DialogExample extends UI {
 									addStyleName("v-panel-caption");
 								}
 							});
-							addComponent(textField("Email"));
-							addComponent(new VerticalLayout() {
+							addComponent(new CssLayout() {
 								{
-									setSizeUndefined();
+									addStyleName(VERTICAL);
+									addStyleName("content-area");
 
-									addComponent(textField("Card number"));
-									addComponent(new HorizontalLayout() {
+									addComponent(textField("Email"));
+									addComponent(new CssLayout() {
 										{
-											setSizeUndefined();
+											addStyleName(VERTICAL);
+											addStyleName(V_COMPONENT_GROUP);
 
-											addComponent(textField("MM / YY"));
-											addComponent(textField("CVC"));
+											addComponent(textField("Card number"));
+											addComponent(new CssLayout() {
+												{
+													addStyleName("horizontal");
+													addStyleName(BLOCK);
+													addStyleName(V_COMPONENT_GROUP);
+
+													addComponent(textField("MM / YY"));
+													addComponent(textField("CVC"));
+												}
+											});
 										}
 									});
+									addComponent(new CheckBox("Remember me"));
+									addComponent(new Button("Pay $499.99"));
 								}
 							});
-							addComponent(new CheckBox("Remember me"));
-							addComponent(new Button("Pay $499.99"));
 						}
 					});
 				}
