@@ -41,6 +41,21 @@
   	overflow: visible !important;
   }
 
+  .text-field {
+  	position: relative;
+  
+  	& > .v-image {
+  	  position: absolute;
+      top: 13px;
+      left: 9px;
+  	}
+  	
+	& > .v-textfield {
+	  width: 100%;
+	  padding-left: 27px;
+	}
+  }
+	
   .v-textfield {
   	width: 5em;
   }
@@ -80,7 +95,7 @@
   	position: static !important;
   }
 
-  .v-image {
+  .badge {
   	position: absolute;
   	top: 0;
   	left: 50%;

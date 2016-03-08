@@ -10,7 +10,9 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CheckBox;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
@@ -36,7 +38,12 @@ public class DialogExample extends UI {
 
 			setContent(new CssLayout() {
 				{
-					addComponent(new Image(null, new ThemeResource("icon-beta.png")));
+					addComponent(new Image() {
+						{
+							setSource(new ThemeResource("icon-beta.png"));
+							addStyleName("badge");
+						}
+					});
 					addComponent(new CssLayout() {
 						{
 							addStyleName(VERTICAL);
@@ -74,7 +81,11 @@ public class DialogExample extends UI {
 										}
 									});
 									addComponent(new CheckBox("Remember me"));
-									addComponent(new Button("Pay $499.99"));
+									addComponent(new Button("Pay $499.99") {
+										{
+											addStyleName(ValoTheme.BUTTON_PRIMARY);
+										}
+									});
 								}
 							});
 						}
@@ -84,10 +95,21 @@ public class DialogExample extends UI {
 		}
 	};
 
-	private TextField textField(String label) {
-		return new TextField() {
+	private Component textField(String label) {
+		return new CssLayout() {
 			{
-				setInputPrompt(label);
+				addStyleName("text-field");
+
+				addComponent(new Image() {
+					{
+						setSource(new ThemeResource("star_12x11.png"));
+					}
+				});
+				addComponent(new TextField() {
+					{
+						setInputPrompt(label);
+					}
+				});
 			}
 		};
 	}
