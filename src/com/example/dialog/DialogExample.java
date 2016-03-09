@@ -40,7 +40,7 @@ public class DialogExample extends UI {
 					});
 					addComponent(new CssLayout() {
 						{
-							addStyleName("vertical");
+							addStyleName("layout--vertical");
 
 							addComponent(new Label(
 									"<header><h1>September golf trip</h1><p>Robert Trent Jones Golf Trail</p></header>",
@@ -52,31 +52,31 @@ public class DialogExample extends UI {
 							});
 							addComponent(new CssLayout() {
 								{
-									addStyleName("vertical");
 									addStyleName("content-area");
+									addStyleName("layout--vertical");
 
 									addComponent(new ExampleTextField("Email"));
 									addComponent(new CssLayout() {
 										{
-											addStyleName("vertical");
+											addStyleName("layout--vertical");
 
 											addComponent(new ExampleTextField("Card number") {
 												{
-													addStyleName("top");
+													addStyleName("text-field--top");
 												}
 											});
 											addComponent(new CssLayout() {
 												{
-													addStyleName("horizontal");
+													addStyleName("layout--horizontal");
 
 													addComponent(new ExampleTextField("MM / YY") {
 														{
-															addStyleName("lower-left");
+															addStyleName("text-field--lower-left");
 														}
 													});
 													addComponent(new ExampleTextField("CVC") {
 														{
-															addStyleName("lower-right");
+															addStyleName("text-field--lower-right");
 														}
 													});
 												}
@@ -105,11 +105,13 @@ public class DialogExample extends UI {
 
 			addComponent(new Image() {
 				{
+					addStyleName("text-field__icon");
 					setSource(new ThemeResource("star_12x11.png"));
 				}
 			});
 			addComponent(new TextField() {
 				{
+					addStyleName("text-field__input");
 					setInputPrompt(label);
 				}
 			});
