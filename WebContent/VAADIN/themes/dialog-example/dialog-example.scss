@@ -43,6 +43,7 @@
 
   .text-field {
   	position: relative;
+  	display: flex;
   
   	& > .v-image {
   	  position: absolute;
@@ -51,8 +52,9 @@
   	}
   	
 	& > .v-textfield {
-	  width: 100%;
 	  padding-left: 27px;
+  	  flex-grow: 1;
+  	  flex-shrink: 1;
 	}
   }
 	
@@ -173,9 +175,12 @@
   	line-height: 1.4;
   }
   
+  .v-panel-caption {
+  	padding: 0 2rem;
+  }
+  
   header {
-  	padding-top: 3rem;
-  	padding-bottom: 1rem;
+  	padding: 3rem 2rem 1rem;
   	
     & > p {
   	  font-size: .8rem;
