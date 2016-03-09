@@ -74,6 +74,7 @@ public class DialogExample extends UI {
 										}
 									});
 									addComponent(new CheckBox("Remember me"));
+									addComponent(new Label());
 									addComponent(new Button("Pay $499.99") {
 										{
 											addStyleName(ValoTheme.BUTTON_PRIMARY);
