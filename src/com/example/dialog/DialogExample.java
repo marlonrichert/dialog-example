@@ -57,18 +57,18 @@ public class DialogExample extends UI {
 									addStyleName(VERTICAL);
 									addStyleName("content-area");
 
-									addComponent(textField("Email"));
+									addComponent(textField("", "Email"));
 									addComponent(new CssLayout() {
 										{
 											addStyleName(VERTICAL);
 
-											addComponent(textField("Card number"));
+											addComponent(textField("", "Card number"));
 											addComponent(new CssLayout() {
 												{
 													addStyleName("horizontal");
 
-													addComponent(textField("MM / YY"));
-													addComponent(textField("CVC"));
+													addComponent(textField("bottom", "MM / YY"));
+													addComponent(textField("bottom", "CVC"));
 												}
 											});
 										}
@@ -89,10 +89,11 @@ public class DialogExample extends UI {
 		}
 	};
 
-	private Component textField(String label) {
+	private Component textField(String style, String label) {
 		return new CssLayout() {
 			{
 				addStyleName("text-field");
+				addStyleName(style);
 
 				addComponent(new Image() {
 					{

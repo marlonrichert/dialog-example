@@ -57,9 +57,21 @@
   	  flex-shrink: 1;
 	}
   }
+  
+  .bottom {
+  	margin-top: -1px;
+  }
+	
+  .v-image {
+  	z-index: 2;
+  }
 	
   .v-textfield {
   	width: 5em;
+  	
+  	&.v-textfield-focus {
+  	  z-index: 1;
+  	}
   }
 
   .vertical {
