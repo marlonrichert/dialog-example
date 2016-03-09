@@ -58,10 +58,32 @@
 	}
   }
   
-  .bottom {
+  .top > .v-textfield {
+  	border-bottom-left-radius: 0;
+  	border-bottom-right-radius: 0;
+  }
+  
+  .lower-left,
+  .lower-right {
   	margin-top: -1px;
   }
-	
+  
+  .lower-left > .v-textfield {
+  	border-top-left-radius: 0;
+  	border-top-right-radius: 0;
+  	border-bottom-right-radius: 0;
+  }
+  
+  .lower-right {
+  	margin-left: -1px;
+  	
+  	& > .v-textfield {
+  	border-top-left-radius: 0;
+  	border-top-right-radius: 0;
+  	border-bottom-left-radius: 0;
+ 	}
+  }
+  
   .v-image {
   	z-index: 2;
   }

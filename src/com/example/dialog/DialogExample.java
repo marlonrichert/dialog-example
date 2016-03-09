@@ -25,8 +25,6 @@ import com.vaadin.ui.themes.ValoTheme;
 @SuppressWarnings("serial")
 @Theme("dialog-example")
 public class DialogExample extends UI {
-	private static final String VERTICAL = "vertical";
-
 	Window window = new Window() {
 		{
 			setResizable(false);
@@ -42,7 +40,7 @@ public class DialogExample extends UI {
 					});
 					addComponent(new CssLayout() {
 						{
-							addStyleName(VERTICAL);
+							addStyleName("vertical");
 
 							addComponent(new Label(
 									"<header><h1>September golf trip</h1><p>Robert Trent Jones Golf Trail</p></header>",
@@ -54,21 +52,33 @@ public class DialogExample extends UI {
 							});
 							addComponent(new CssLayout() {
 								{
-									addStyleName(VERTICAL);
+									addStyleName("vertical");
 									addStyleName("content-area");
 
-									addComponent(textField("", "Email"));
+									addComponent(new ExampleTextField("Email"));
 									addComponent(new CssLayout() {
 										{
-											addStyleName(VERTICAL);
+											addStyleName("vertical");
 
-											addComponent(textField("", "Card number"));
+											addComponent(new ExampleTextField("Card number") {
+												{
+													addStyleName("top");
+												}
+											});
 											addComponent(new CssLayout() {
 												{
 													addStyleName("horizontal");
 
-													addComponent(textField("bottom", "MM / YY"));
-													addComponent(textField("bottom", "CVC"));
+													addComponent(new ExampleTextField("MM / YY") {
+														{
+															addStyleName("lower-left");
+														}
+													});
+													addComponent(new ExampleTextField("CVC") {
+														{
+															addStyleName("lower-right");
+														}
+													});
 												}
 											});
 										}
@@ -89,24 +99,21 @@ public class DialogExample extends UI {
 		}
 	};
 
-	private Component textField(String style, String label) {
-		return new CssLayout() {
-			{
-				addStyleName("text-field");
-				addStyleName(style);
+	private class ExampleTextField extends CssLayout {
+		public ExampleTextField(String label) {
+			addStyleName("text-field");
 
-				addComponent(new Image() {
-					{
-						setSource(new ThemeResource("star_12x11.png"));
-					}
-				});
-				addComponent(new TextField() {
-					{
-						setInputPrompt(label);
-					}
-				});
-			}
-		};
+			addComponent(new Image() {
+				{
+					setSource(new ThemeResource("star_12x11.png"));
+				}
+			});
+			addComponent(new TextField() {
+				{
+					setInputPrompt(label);
+				}
+			});
+		}
 	}
 
 	@WebServlet(value = "/*", asyncSupported = true)
