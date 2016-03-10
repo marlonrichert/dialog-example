@@ -40,6 +40,10 @@
   .v-window {
   	overflow: visible !important;
   }
+  
+  .v-csslayout {
+  	position: relative;
+  }
 
   .text-field {
   	position: relative;
@@ -126,20 +130,17 @@
   	content: none;
   }
 
-  .v-window-wrap {
-  	position: relative;
-  }
-  
   .v-scrollable {
   	position: static !important;
   }
 
   .badge {
   	position: absolute;
-  	top: 0;
-  	left: 50%;
-    margin-top: -40px;
-    margin-left: -40px;
+  	z-index: 1;
+  	top: -40px;
+  	left: 0;
+  	right: 0;
+    margin: auto;
     width: 80px;
     height: 80px;
   }
@@ -169,34 +170,6 @@
     }
   }
 
-  .v-csslayout-v-component-group > .v-widget {
-  	margin-left: 0;
-  }
-  
-  .v-csslayout-v-component-group.vertical > .v-widget:first-child {
-  	border-top-right-radius: 4px;
-  	border-bottom-left-radius: 0;
-  	border-bottom-color: rgb(226, 226, 226);
-  }
-  
-  .v-csslayout-v-component-group.vertical > .v-csslayout-v-component-group.horizontal > .v-widget {
-  	border-top-left-radius: 0;
-  	border-top-right-radius: 0;
-  	margin-top: -1px;
-  	padding-top: 5px;
-  	border-top-color: rgb(226, 226, 226);
-  }
-  
-  .v-csslayout-v-component-group.vertical > .v-csslayout-v-component-group.horizontal > .v-widget:first-child {
-  	border-right-color: rgb(226, 226, 226);
-  }
-  
-  .v-csslayout-v-component-group.vertical > .v-csslayout-v-component-group.horizontal > .v-widget + .v-widget {
-  	margin-left: -1px;
-  	padding-left: 10px;
-  	border-left-color: rgb(226, 226, 226);
-  }
-  
   .v-label {
   	text-align: center;
   }

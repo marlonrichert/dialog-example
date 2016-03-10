@@ -18,6 +18,8 @@ import com.vaadin.ui.UI;
 @SuppressWarnings("serial")
 @Theme("dialog-example")
 public class DialogExample extends UI {
+	private static final String BADGE = "badge";
+
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = DialogExample.class, widgetset = "com.example.dialog.widgetset.Dialog_exampleWidgetset")
 	public static class Servlet extends VaadinServlet {
@@ -27,7 +29,7 @@ public class DialogExample extends UI {
 	protected void init(VaadinRequest request) {
 		addWindow(new Dialog(new Layout() {
 			{
-				add(new Image(new ThemeResource("icon-beta.png"), "badge"));
+				add(new Image(new ThemeResource("icon-beta.png"), BADGE));
 				add(new Layout(VERTICAL) {
 					{
 						add(new Header("<h1>September golf trip</h1><p>Robert Trent Jones Golf Trail</p>"));
