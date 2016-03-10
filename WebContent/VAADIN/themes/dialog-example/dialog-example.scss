@@ -95,6 +95,10 @@
  	}
   }
  	
+  .layout--padded {
+  	padding: 2rem 2rem;
+  }
+
   .layout--vertical {
   	display: flex;
   	flex-direction: column;
@@ -140,12 +144,8 @@
     height: 80px;
   }
   
-  .content-area {
-  	padding: 1.5rem 2rem;
-  	
-  	& > * {
-  	  margin: .5rem 0;
-  	}
+  .spacer {
+  	margin: .5rem 0;
   }
   
   :root & .v-checkbox > input,
