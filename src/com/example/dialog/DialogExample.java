@@ -1,9 +1,10 @@
 package com.example.dialog;
 
 import static com.example.dialog.Button.PRIMARY;
-import static com.example.dialog.TextField.LOWER_LEFT;
-import static com.example.dialog.TextField.LOWER_RIGHT;
-import static com.example.dialog.TextField.TOP;
+import static com.example.dialog.TextField.SECTION_TOP;
+import static com.example.dialog.TextField.SECTION_RIGHT;
+import static com.example.dialog.TextField.SECTION_BOTTOM;
+import static com.example.dialog.TextField.SECTION_LEFT;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -39,11 +40,11 @@ public class DialogExample extends UI {
 								addSpace();
 								add(new Layout(VERTICAL) {
 									{
-										add(new TextField("Card number", TOP));
+										add(new TextField("Card number", SECTION_BOTTOM));
 										add(new Layout(HORIZONTAL) {
 											{
-												add(new TextField("MM / YY", LOWER_LEFT));
-												add(new TextField("CVC", LOWER_RIGHT));
+												add(new TextField("MM / YY", SECTION_TOP, SECTION_RIGHT));
+												add(new TextField("CVC", SECTION_TOP, SECTION_LEFT));
 											}
 										});
 									}

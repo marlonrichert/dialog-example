@@ -68,37 +68,38 @@
   	}
   }
 
-  .text-field--top .text-field__input {
+  .text-field--section-top {
+  	margin-top: -1px;
+  }
+  
+  .text-field--section-left {
+  	margin-left: -1px;
+  }
+  
+  .text-field--section-top .text-field__input {
+  	border-top-left-radius: 0;
+  	border-top-right-radius: 0;
+  	border-top-color: rgb(226, 226, 226);
+  }
+  
+  .text-field--section-right .text-field__input {
+  	border-top-right-radius: 0;
+  	border-bottom-right-radius: 0;
+  	border-right-color: rgb(226, 226, 226);
+  }
+  
+  .text-field--section-bottom .text-field__input {
   	border-bottom-left-radius: 0;
   	border-bottom-right-radius: 0;
   	border-bottom-color: rgb(226, 226, 226);
   }
   
-  .text-field--lower-left,
-  .text-field--lower-right {
-  	margin-top: -1px;
-  }
-  
-  .text-field--lower-left .text-field__input {
+  .text-field--section-left .text-field__input {
   	border-top-left-radius: 0;
-  	border-top-right-radius: 0;
-  	border-bottom-right-radius: 0;
-	border-top-color: rgb(226, 226, 226);
-  	border-right-color: rgb(226, 226, 226);
+  	border-bottom-left-radius: 0;
+  	border-left-color: rgb(226, 226, 226);
   }
   
-  .text-field--lower-right {
-  	margin-left: -1px;
-  	
-  	& .text-field__input {
-	  border-top-left-radius: 0;
-	  border-top-right-radius: 0;
-	  border-bottom-left-radius: 0;
-	  border-top-color: rgb(226, 226, 226);
-	  border-left-color: rgb(226, 226, 226);
- 	}
-  }
- 	
   .layout--padded {
   	padding: 2rem 2rem;
   }

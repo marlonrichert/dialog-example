@@ -5,9 +5,10 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Image;
 
 public class TextField extends CssLayout {
-	static final String TOP = "text-field--top";
-	static final String LOWER_LEFT = "text-field--lower-left";
-	static final String LOWER_RIGHT = "text-field--lower-right";
+	static final String SECTION_TOP = "text-field--section-top";
+	static final String SECTION_RIGHT = "text-field--section-right";
+	static final String SECTION_BOTTOM = "text-field--section-bottom";
+	static final String SECTION_LEFT = "text-field--section-left";
 
 	public TextField(String label) {
 		addStyleName("text-field");
@@ -26,8 +27,10 @@ public class TextField extends CssLayout {
 		});
 	}
 	
-	public TextField(String label, String style) {
+	public TextField(String label, String... styles) {
 		this(label);
-		addStyleName(style);
+		for (int i = 0; i < styles.length; i++) {
+			addStyleName(styles[i]);
+		}
 	}
 }
