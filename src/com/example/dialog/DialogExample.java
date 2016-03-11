@@ -32,7 +32,7 @@ public class DialogExample extends UI {
 				add(new Image(new ThemeResource("icon-beta.png"), BADGE));
 				add(new Layout(VERTICAL) {
 					{
-						add(new Header("<h1>September golf trip</h1><p>Robert Trent Jones Golf Trail</p>"));
+						add(new Header("September golf trip", "Robert Trent Jones Golf Trail"));
 						add(new Layout(VERTICAL, PADDED) {
 							{
 								add(new TextField("Email"));
