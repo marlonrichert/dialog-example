@@ -122,6 +122,10 @@
   	}
   }
   
+  .layout__spacer {
+  	margin: .5rem 0;
+  }
+  
   .v-window {
   	background: $v-app-background-color;
   }
@@ -144,10 +148,6 @@
     margin: auto;
     width: 80px;
     height: 80px;
-  }
-  
-  .spacer {
-  	margin: .5rem 0;
   }
   
   :root & .v-checkbox > input,

@@ -2,6 +2,7 @@ package com.example.dialog;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.Label;
 
 class Layout extends CssLayout {
 	static final String VERTICAL = "layout--vertical";
@@ -20,5 +21,11 @@ class Layout extends CssLayout {
 
 	public void addSpace() {
 		addComponent(new Spacer());
+	}
+	
+	protected class Spacer extends Label {
+		public Spacer() {
+			addStyleName("layout__spacer");
+		}
 	}
 }
