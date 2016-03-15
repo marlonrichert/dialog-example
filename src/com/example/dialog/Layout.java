@@ -14,15 +14,21 @@ class Layout extends CssLayout {
 			addStyleName(styles[i]);
 		}
 	}
-	
+
 	public void add(Component c) {
 		super.addComponent(c);
 	}
 
-	public void addSpace() {
-		addComponent(new Spacer());
+	public void space() {
+		space(1);
 	}
-	
+
+	public void space(int spacers) {
+		for (int i = 0; i < spacers; i++) {
+			addComponent(new Spacer());
+		}
+	}
+
 	protected class Spacer extends Label {
 		public Spacer() {
 			addStyleName("layout__spacer");

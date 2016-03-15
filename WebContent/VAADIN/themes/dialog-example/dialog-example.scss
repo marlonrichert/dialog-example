@@ -68,6 +68,10 @@
   	}
   }
 
+  .text-field--required-hidden .v-required-field-indicator {
+  	display: none;
+  }
+
   .text-field--section-top {
   	margin-top: -1px;
   }
@@ -168,6 +172,8 @@
     
     > label {
       margin-left: 9px;
+      font-weight: bold;
+      opacity: .8;
     }
   }
 
