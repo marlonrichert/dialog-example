@@ -76,11 +76,7 @@ public class PaymentDialog extends Dialog {
 
 	private void setRequiredFields(TextField... fields) {
 		requiredFields = fields;
-		Stream.of(fields).forEach(f -> {
-			f.addTextChangeListener(event -> {
-				checkRequired(event);
-			});
-		});
+		Stream.of(fields).forEach(f -> f.addTextChangeListener(event -> checkRequired(event)));
 	}
 
 	private void checkRequired(TextChangeEvent event) {
