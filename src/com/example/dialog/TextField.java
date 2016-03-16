@@ -11,28 +11,29 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Image;
 
 public class TextField extends CssLayout {
-	static final String SECTION_TOP = "text-field--section-top";
-	static final String SECTION_RIGHT = "text-field--section-right";
-	static final String SECTION_BOTTOM = "text-field--section-bottom";
-	static final String SECTION_LEFT = "text-field--section-left";
-
-	static final String REQUIRED_HIDDEN = "text-field--required-hidden";
+	private static final BlockStyle BLOCK_STYLE = new BlockStyle("v-text-field");
+	
+	static final ModifierStyle SECTION_TOP = new ModifierStyle(BLOCK_STYLE, "section-top");
+	static final ModifierStyle SECTION_RIGHT = new ModifierStyle(BLOCK_STYLE, "section-right");
+	static final ModifierStyle SECTION_BOTTOM = new ModifierStyle(BLOCK_STYLE, "section-bottom");
+	static final ModifierStyle SECTION_LEFT = new ModifierStyle(BLOCK_STYLE, "section-left");
+	static final ModifierStyle REQUIRED_HIDDEN = new ModifierStyle(BLOCK_STYLE, "required-hidden");
 
 	private com.vaadin.ui.TextField input;
 	private Set<TextChangeListener> listeners = new HashSet<>();
 
 	public TextField(String label) {
-		setPrimaryStyleName("text-field");
+		setPrimaryStyleName("" + BLOCK_STYLE);
 
 		addComponent(new Image() {
 			{
-				addStyleName("text-field__icon");
+				addStyleName("" + new ElementStyle(BLOCK_STYLE, "icon"));
 				setSource(new ThemeResource("star_12x11.png"));
 			}
 		});
 		addComponent(input = new com.vaadin.ui.TextField() {
 			{
-				addStyleName("text-field__input");
+				addStyleName("" + new ElementStyle(BLOCK_STYLE, "input"));
 				setInputPrompt(label);
 			}
 		});
@@ -40,10 +41,10 @@ public class TextField extends CssLayout {
 		input.addTextChangeListener(event -> notifyTextChangeListeners(event));
 	}
 
-	public TextField(String label, String... styles) {
+	public TextField(String label, ModifierStyle... styles) {
 		this(label);
 
-		Stream.of(styles).forEach(s -> addStyleName(s));
+		Stream.of(styles).forEach(s -> addStyleName("" + s));
 		if (Stream.of(styles).anyMatch(s -> REQUIRED_HIDDEN.equals(s))) {
 			input.setRequired(true);
 		}
