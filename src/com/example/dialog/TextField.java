@@ -8,46 +8,37 @@ import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.Image;
 
 public class TextField extends CssLayout {
 	private static final BlockStyle BLOCK_STYLE = new BlockStyle("v-text-field");
-	
-	static final ModifierStyle SECTION_TOP = new ModifierStyle(BLOCK_STYLE, "section-top");
-	static final ModifierStyle SECTION_RIGHT = new ModifierStyle(BLOCK_STYLE, "section-right");
-	static final ModifierStyle SECTION_BOTTOM = new ModifierStyle(BLOCK_STYLE, "section-bottom");
-	static final ModifierStyle SECTION_LEFT = new ModifierStyle(BLOCK_STYLE, "section-left");
-	static final ModifierStyle REQUIRED_HIDDEN = new ModifierStyle(BLOCK_STYLE, "required-hidden");
+	private static final ElementStyle ICON = new ElementStyle(BLOCK_STYLE, "icon");
+	private static final ElementStyle INPUT = new ElementStyle(BLOCK_STYLE, "input");
 
-	private com.vaadin.ui.TextField input;
+	public static final ModifierStyle SECTION_TOP = new ModifierStyle(BLOCK_STYLE, "section-top");
+	public static final ModifierStyle SECTION_RIGHT = new ModifierStyle(BLOCK_STYLE, "section-right");
+	public static final ModifierStyle SECTION_BOTTOM = new ModifierStyle(BLOCK_STYLE, "section-bottom");
+	public static final ModifierStyle SECTION_LEFT = new ModifierStyle(BLOCK_STYLE, "section-left");
+	public static final ModifierStyle REQUIRED_HIDDEN = new ModifierStyle(BLOCK_STYLE, "required-hidden");
+
 	private Set<TextChangeListener> listeners = new HashSet<>();
-
-	public TextField(String label) {
-		setPrimaryStyleName("" + BLOCK_STYLE);
-
-		addComponent(new Image() {
-			{
-				addStyleName("" + new ElementStyle(BLOCK_STYLE, "icon"));
-				setSource(new ThemeResource("star_12x11.png"));
-			}
-		});
-		addComponent(input = new com.vaadin.ui.TextField() {
-			{
-				addStyleName("" + new ElementStyle(BLOCK_STYLE, "input"));
-				setInputPrompt(label);
-			}
-		});
-
-		input.addTextChangeListener(event -> notifyTextChangeListeners(event));
-	}
+	private com.vaadin.ui.TextField input;
 
 	public TextField(String label, ModifierStyle... styles) {
-		this(label);
+		setBlockStyle(BLOCK_STYLE);
+
+		addComponent(new Image(new ThemeResource("star_12x11.png")).setElementStyle(ICON));
+		addComponent(input = new TextInput(label).setElementStyle(INPUT));
 
 		Stream.of(styles).forEach(s -> addStyleName("" + s));
 		if (Stream.of(styles).anyMatch(s -> REQUIRED_HIDDEN.equals(s))) {
 			input.setRequired(true);
 		}
+
+		input.addTextChangeListener(event -> notifyTextChangeListeners(event));
+	}
+
+	protected void setBlockStyle(BlockStyle blockStyle) {
+		setPrimaryStyleName("" + blockStyle);
 	}
 
 	public String getValue() {
@@ -79,5 +70,16 @@ public class TextField extends CssLayout {
 				return event.getCursorPosition();
 			}
 		}));
+	}
+
+	private final class TextInput extends com.vaadin.ui.TextField {
+		public TextInput(String label) {
+			setInputPrompt(label);
+		}
+
+		public TextInput setElementStyle(ElementStyle style) {
+			addStyleName("" + style);
+			return this;
+		}
 	}
 }

@@ -1,10 +1,17 @@
 package com.example.dialog;
 
+import java.util.stream.Stream;
+
 import com.vaadin.server.ThemeResource;
 
-final class Image extends com.vaadin.ui.Image {
-	public Image(ThemeResource source, String style){
+public class Image extends com.vaadin.ui.Image {
+	public Image(ThemeResource source, String... styles) {
 		setSource(source);
-		addStyleName(style);
+		Stream.of(styles).forEach(s -> addStyleName(s));
+	}
+
+	public Image setElementStyle(ElementStyle elementStyle) {
+		addStyleName("" + elementStyle);
+		return this;
 	}
 }
