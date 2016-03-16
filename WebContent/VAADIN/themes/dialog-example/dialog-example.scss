@@ -85,24 +85,40 @@
   	border-top-left-radius: 0;
   	border-top-right-radius: 0;
   	border-top-color: rgb(226, 226, 226);
+  	
+  	&:focus {
+  		border-top-color: rgb(25, 125, 225);
+  	}
   }
   
   .text-field--section-right .text-field__input {
   	border-top-right-radius: 0;
   	border-bottom-right-radius: 0;
   	border-right-color: rgb(226, 226, 226);
+  	
+  	&:focus {
+  		border-right-color: rgb(25, 125, 225);
+  	}
   }
   
   .text-field--section-bottom .text-field__input {
   	border-bottom-left-radius: 0;
   	border-bottom-right-radius: 0;
   	border-bottom-color: rgb(226, 226, 226);
+  	
+  	&:focus {
+  		border-bottom-color: rgb(25, 125, 225);
+  	}
   }
   
   .text-field--section-left .text-field__input {
   	border-top-left-radius: 0;
   	border-bottom-left-radius: 0;
   	border-left-color: rgb(226, 226, 226);
+  	  	
+  	&:focus {
+  		border-left-color: rgb(25, 125, 225);
+  	}
   }
   
   .layout--padded {
