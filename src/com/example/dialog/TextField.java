@@ -24,21 +24,28 @@ public class TextField extends CssLayout {
 	private com.vaadin.ui.TextField input;
 
 	public TextField(String label, ModifierStyle... styles) {
-		setBlockStyle(BLOCK_STYLE);
-
 		addComponent(new Image(new ThemeResource("star_12x11.png")).setElementStyle(ICON));
 		addComponent(input = new TextInput(label).setElementStyle(INPUT));
 
-		Stream.of(styles).forEach(s -> addStyleName("" + s));
-		if (Stream.of(styles).anyMatch(s -> REQUIRED_HIDDEN.equals(s))) {
-			input.setRequired(true);
-		}
-
 		input.addTextChangeListener(event -> notifyTextChangeListeners(event));
+		
+		setBlockStyle(BLOCK_STYLE);
+		addModifierStyles(styles);
 	}
 
 	protected void setBlockStyle(BlockStyle blockStyle) {
 		setPrimaryStyleName("" + blockStyle);
+	}
+
+	public void addModifierStyles(ModifierStyle... styles) {
+		Stream.of(styles).forEach(s -> addModifierStyle(s));
+		if (Stream.of(styles).anyMatch(s -> REQUIRED_HIDDEN.equals(s))) {
+			input.setRequired(true);
+		}
+	}
+
+	public void addModifierStyle(ModifierStyle style) {
+		addStyleName("" + style);
 	}
 
 	public String getValue() {
