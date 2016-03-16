@@ -10,11 +10,13 @@ import static com.example.dialog.TextField.SECTION_TOP;
 
 import java.util.stream.Stream;
 
+import org.vaadin.viritin.form.AbstractForm;
+
 import com.vaadin.event.FieldEvents.TextChangeEvent;
-import com.vaadin.event.FieldEvents.TextChangeListener;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CheckBox;
+import com.vaadin.ui.Component;
 
 public class PaymentDialog extends Dialog {
 	public static final String PAY_CAPTION = "Pay %s";
@@ -60,23 +62,31 @@ public class PaymentDialog extends Dialog {
 								space(2);
 								add(payControl = new Button(PAY_CAPTION, listener, DISABLED, PRIMARY));
 							}
+
 						});
+
 					}
 				});
 			}
+
 		});
-		
+
 		setRequiredFields(email, cardNumber, mmyy, cvc);
 	}
 
 	private void setRequiredFields(TextField... fields) {
 		requiredFields = fields;
-		Stream.of(fields).forEach(f -> f.addTextChangeListener(event -> checkRequired(event)));
+		Stream.of(fields).forEach(f -> {
+			f.addTextChangeListener(event -> {
+				checkRequired(event);
+			});
+		});
 	}
 
 	private void checkRequired(TextChangeEvent event) {
 		boolean filledOut = !event.getText().isEmpty();
-		boolean othersFilledOut = Stream.of(requiredFields).filter(f -> !f.equals(event.getSource())).allMatch(f -> !f.isEmpty());
+		boolean othersFilledOut = Stream.of(requiredFields).filter(f -> !f.equals(event.getSource()))
+				.allMatch(f -> !f.isEmpty());
 		payControl.setEnabled(filledOut && othersFilledOut);
 	}
 

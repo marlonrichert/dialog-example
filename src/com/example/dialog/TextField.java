@@ -47,7 +47,6 @@ public class TextField extends CssLayout {
 		if (Stream.of(styles).anyMatch(s -> REQUIRED_HIDDEN.equals(s))) {
 			input.setRequired(true);
 		}
-		;
 	}
 
 	public String getValue() {
