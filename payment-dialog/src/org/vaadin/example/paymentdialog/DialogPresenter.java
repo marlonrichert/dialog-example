@@ -1,4 +1,4 @@
-package com.example.dialog;
+package org.vaadin.example.paymentdialog;
 
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;

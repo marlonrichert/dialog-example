@@ -1,4 +1,4 @@
-package com.example.dialog;
+package org.vaadin.example.paymentdialog;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Window;

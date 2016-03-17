@@ -1,4 +1,4 @@
-package com.example.dialog;
+package org.vaadin.example.paymentdialog;
 
 import javax.servlet.annotation.WebServlet;
 

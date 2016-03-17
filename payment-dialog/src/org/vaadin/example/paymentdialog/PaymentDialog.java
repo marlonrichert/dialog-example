@@ -1,12 +1,12 @@
-package com.example.dialog;
+package org.vaadin.example.paymentdialog;
 
-import static com.example.dialog.Button.DISABLED;
-import static com.example.dialog.Button.PRIMARY;
-import static com.example.dialog.TextField.REQUIRED_HIDDEN;
-import static com.example.dialog.TextField.SECTION_BOTTOM;
-import static com.example.dialog.TextField.SECTION_LEFT;
-import static com.example.dialog.TextField.SECTION_RIGHT;
-import static com.example.dialog.TextField.SECTION_TOP;
+import static org.vaadin.example.paymentdialog.Button.DISABLED;
+import static org.vaadin.example.paymentdialog.Button.PRIMARY;
+import static org.vaadin.example.paymentdialog.TextField.REQUIRED_HIDDEN;
+import static org.vaadin.example.paymentdialog.TextField.SECTION_BOTTOM;
+import static org.vaadin.example.paymentdialog.TextField.SECTION_LEFT;
+import static org.vaadin.example.paymentdialog.TextField.SECTION_RIGHT;
+import static org.vaadin.example.paymentdialog.TextField.SECTION_TOP;
 
 import java.util.stream.Stream;
 
