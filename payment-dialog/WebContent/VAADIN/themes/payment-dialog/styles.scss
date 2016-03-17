@@ -1,9 +1,8 @@
 @import "addons.scss";
-@import "dialog-example.scss";
+@import "payment-dialog.scss";
 
 /* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
-/* The actual styles should be defined in dialog-example.scss */
-.dialog-example {
+.payment-dialog {
   @include addons;
-  @include dialog-example;
+  @include payment-dialog;
 }

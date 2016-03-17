@@ -8,10 +8,10 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 
 @SuppressWarnings("serial")
-@Theme("dialog-example")
+@Theme("payment-dialog")
 public class UI extends com.vaadin.ui.UI {
 	@WebServlet(value = "/*", asyncSupported = true)
-	@VaadinServletConfiguration(productionMode = false, ui = UI.class, widgetset = "com.example.dialog.widgetset.Dialog_exampleWidgetset")
+	@VaadinServletConfiguration(productionMode = false, ui = UI.class, widgetset = "org.vaadin.example.paymentdialog.widgetset.PaymentDialogWidgetset")
 	public static class Servlet extends VaadinServlet {
 	}
 

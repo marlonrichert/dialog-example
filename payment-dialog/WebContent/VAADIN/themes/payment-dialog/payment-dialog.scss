@@ -29,7 +29,7 @@
 
 @import "../valo/valo.scss";
 
-@mixin dialog-example {
+@mixin payment-dialog {
   @include valo;
 
   .v-csslayout,
