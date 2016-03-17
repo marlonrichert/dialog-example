@@ -10,8 +10,6 @@ import static com.example.dialog.TextField.SECTION_TOP;
 
 import java.util.stream.Stream;
 
-import org.vaadin.viritin.form.AbstractForm;
-
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button.ClickListener;

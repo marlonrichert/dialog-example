@@ -12,7 +12,7 @@ import com.vaadin.ui.UI;
 @Theme("dialog-example")
 public class DialogExample extends UI {
 	@WebServlet(value = "/*", asyncSupported = true)
-	@VaadinServletConfiguration(productionMode = false, ui = DialogExample.class, widgetset = "com.example.dialog.widgetset.Dialog_exampleWidgetset")
+	@VaadinServletConfiguration(productionMode = false, ui = DialogExample.class)
 	public static class Servlet extends VaadinServlet {
 	}
 
