@@ -8,7 +8,6 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
@@ -21,28 +20,27 @@ import com.vaadin.ui.VerticalLayout;
 @Widgetset("org.vaadin.example.logindialog.LoginDialogWidgetset")
 public class LoginUI extends UI {
 
-    @Override
-    protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
-        
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+	@Override
+	protected void init(VaadinRequest vaadinRequest) {
+		final VerticalLayout layout = new VerticalLayout();
 
-        Button button = new Button("Click Me");
-        button.addClickListener( e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
-        });
-        
-        layout.addComponents(name, button);
-        layout.setMargin(true);
-        layout.setSpacing(true);
-        
-        setContent(layout);
-    }
+		final TextField name = new TextField();
+		name.setCaption("Type your name here:");
 
-    @WebServlet(urlPatterns = "/*", name = "LoginUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = LoginUI.class, productionMode = false)
-    public static class LoginUIServlet extends VaadinServlet {
-    }
+		Button button = new Button("Click Me");
+		button.addClickListener(e -> {
+			layout.addComponent(new Label("Thanks " + name.getValue() + ", it works!"));
+		});
+
+		layout.addComponents(name, button);
+		layout.setMargin(true);
+		layout.setSpacing(true);
+
+		setContent(layout);
+	}
+
+	@WebServlet(urlPatterns = "/*", name = "LoginUIServlet", asyncSupported = true)
+	@VaadinServletConfiguration(ui = LoginUI.class, productionMode = false)
+	public static class LoginUIServlet extends VaadinServlet {
+	}
 }
