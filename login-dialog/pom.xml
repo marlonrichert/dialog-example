@@ -9,7 +9,7 @@
 	<name>login-dialog</name>
 
 	<properties>
-		<vaadin.version>7.6.3</vaadin.version>
+		<vaadin.version>7.7.0.appwidgetset2</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<jetty.plugin.version>9.2.3.v20140905</jetty.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -174,7 +174,7 @@
 			<!-- Vaadin pre-release repositories -->
 			<id>vaadin-prerelease</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			
 			<repositories>
