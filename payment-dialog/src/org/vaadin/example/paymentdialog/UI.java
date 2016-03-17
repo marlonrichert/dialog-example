@@ -17,6 +17,6 @@ public class UI extends com.vaadin.ui.UI {
 
 	@Override
 	protected void init(VaadinRequest request) {
-		new DialogPresenter(this);
+		new Presenter(this);
 	}
 }

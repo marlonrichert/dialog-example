@@ -10,13 +10,10 @@ import static org.vaadin.example.paymentdialog.TextField.SECTION_TOP;
 
 import java.util.stream.Stream;
 
-import org.vaadin.viritin.form.AbstractForm;
-
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CheckBox;
-import com.vaadin.ui.Component;
 
 public class PaymentDialog extends Dialog {
 	public static final String PAY_CAPTION = "Pay %s";

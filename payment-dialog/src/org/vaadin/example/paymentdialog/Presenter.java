@@ -4,11 +4,11 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 
-public class DialogPresenter {
+class Presenter {
 	private PaymentDialog dialog = new PaymentDialog(event -> pay(event));
 	private String cost = "$499.99";
 
-	public DialogPresenter(UI ui) {
+	public Presenter(UI ui) {
 		super();
 		dialog.setPayAmount(cost);
 		ui.addWindow(dialog);
