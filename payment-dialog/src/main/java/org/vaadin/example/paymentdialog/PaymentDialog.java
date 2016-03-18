@@ -2,6 +2,7 @@ package org.vaadin.example.paymentdialog;
 
 import static org.vaadin.example.Button.DISABLED;
 import static org.vaadin.example.Button.PRIMARY;
+import static org.vaadin.example.Image.BADGE;
 import static org.vaadin.example.TextField.REQUIRED_HIDDEN;
 import static org.vaadin.example.TextField.SECTION_BOTTOM;
 import static org.vaadin.example.TextField.SECTION_LEFT;
@@ -24,8 +25,6 @@ import com.vaadin.ui.CheckBox;
 
 public class PaymentDialog extends Dialog {
 	public static final String PAY_CAPTION = "Pay %s";
-
-	private static final String BADGE = "badge";
 
 	private TextField email;
 	private TextField cardNumber;

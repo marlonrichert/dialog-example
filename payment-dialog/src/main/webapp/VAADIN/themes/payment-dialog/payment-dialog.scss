@@ -3,7 +3,7 @@
 @mixin payment-dialog {
   @include valo-2;
   
-  .badge {
+  .v-image--badge {
    	top: -40px;
     width: 80px;
     height: 80px;
