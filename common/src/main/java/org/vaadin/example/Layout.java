@@ -1,13 +1,13 @@
-package org.vaadin.example.paymentdialog;
+package org.vaadin.example;
 
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Label;
 
-class Layout extends CssLayout {
-	static final String VERTICAL = "layout--vertical";
-	static final String HORIZONTAL = "layout--horizontal";
-	static final String PADDED = "layout--padded";
+public class Layout extends CssLayout {
+	public static final String VERTICAL = "layout--vertical";
+	public static final String HORIZONTAL = "layout--horizontal";
+	public static final String PADDED = "layout--padded";
 
 	public Layout(String... styles) {
 		for (int i = 0; i < styles.length; i++) {

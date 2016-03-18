@@ -1,4 +1,4 @@
-package org.vaadin.example.paymentdialog;
+package org.vaadin.example;
 
 import java.util.HashSet;
 import java.util.Set;

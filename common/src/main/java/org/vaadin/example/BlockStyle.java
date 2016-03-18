@@ -1,4 +1,4 @@
-package org.vaadin.example.paymentdialog;
+package org.vaadin.example;
 
 public class BlockStyle implements Style {
 	private String name;
