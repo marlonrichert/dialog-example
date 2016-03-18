@@ -1,98 +1,58 @@
 package org.vaadin.example.logindialog;
-import static org.vaadin.example.Button.DISABLED;
-import static org.vaadin.example.Button.PRIMARY;
-import static org.vaadin.example.TextField.REQUIRED_HIDDEN;
-import static org.vaadin.example.TextField.SECTION_BOTTOM;
-import static org.vaadin.example.TextField.SECTION_LEFT;
-import static org.vaadin.example.TextField.SECTION_RIGHT;
-import static org.vaadin.example.TextField.SECTION_TOP;
 
-import java.util.stream.Stream;
+import static org.vaadin.example.Button.PRIMARY;
+import static org.vaadin.example.Layout.VERTICAL;
+import static org.vaadin.example.TextField.REQUIRED_HIDDEN;
+
+import java.util.regex.Pattern;
 
 import org.vaadin.example.Button;
 import org.vaadin.example.Dialog;
 import org.vaadin.example.Header;
-import org.vaadin.example.Image;
 import org.vaadin.example.Layout;
 import org.vaadin.example.TextField;
 
-import com.vaadin.event.FieldEvents.TextChangeEvent;
-import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.CheckBox;
 
 public class LoginDialog extends Dialog {
-	public static final String PAY_CAPTION = "Pay %s";
-
-	private static final String BADGE = "badge";
+	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+			Pattern.CASE_INSENSITIVE);
 
 	private TextField email;
-	private TextField cardNumber;
-	private TextField mmyy;
-	private TextField cvc;
-	private Button payControl;
-	private CheckBox rememberMe;
-
-	private TextField[] requiredFields;
+	private TextField password;
+	private Button submit;
 
 	public LoginDialog(ClickListener listener) {
 		super();
-		setContent(new Layout() {
+		setClosable(false);
+
+		setContent(new Layout(VERTICAL) {
 			{
-				add(new Layout(VERTICAL) {
+				add(new Header("Log in"));
+				add(new Layout(VERTICAL, PADDED) {
 					{
-						add(new Header("September golf trip", "Robert Trent Jones Golf Trail"));
-						add(new Layout(VERTICAL, PADDED) {
-							{
-								add(email = new TextField("Email", REQUIRED_HIDDEN));
-								space();
-								add(new Layout(VERTICAL) {
-									{
-										add(cardNumber = new TextField("Card number", REQUIRED_HIDDEN, SECTION_BOTTOM));
-										add(new Layout(HORIZONTAL) {
-											{
-												add(mmyy = new TextField("MM / YY", REQUIRED_HIDDEN, SECTION_TOP,
-														SECTION_RIGHT));
-												add(cvc = new TextField("CVC", REQUIRED_HIDDEN, SECTION_TOP,
-														SECTION_LEFT));
-											}
-										});
-									}
-								});
-								space();
-								add(rememberMe = new CheckBox("Remember me"));
-								space(2);
-								add(payControl = new Button(PAY_CAPTION, listener, DISABLED, PRIMARY));
-							}
-
-						});
-
+						add(email = new TextField("Email", REQUIRED_HIDDEN));
+						space();
+						add(password = new TextField("Password", REQUIRED_HIDDEN));
+						space();
+						add(submit = new Button("Submit", listener, PRIMARY));
 					}
-				});
-			}
 
+				});
+
+			}
 		});
 
-		setRequiredFields(email, cardNumber, mmyy, cvc);
+		email.setId("email");
+
+		password.setVisible(false);
+		email.addTextChangeListener(event -> password.setVisible(validEmailAddress(event.getText())));
+		
+		submit.setVisible(false);
+		password.addTextChangeListener(event -> submit.setVisible(!event.getText().isEmpty()));
 	}
 
-	private void setRequiredFields(TextField... fields) {
-		requiredFields = fields;
-		Stream.of(fields).forEach(f -> f.addTextChangeListener(event -> checkRequired(event)));
-	}
-
-	private void checkRequired(TextChangeEvent event) {
-		boolean filledOut = !event.getText().isEmpty();
-		boolean othersFilledOut = Stream.of(requiredFields).filter(f -> !f.equals(event.getSource()))
-				.allMatch(f -> !f.isEmpty());
-		payControl.setEnabled(filledOut && othersFilledOut);
-	}
-
-	public void setPayAmount(String dollars) {
-		payControl.setCaption(String.format(PAY_CAPTION, dollars));
-	}
-
-	public String getEmail() {
-		return email.getValue();
+	private boolean validEmailAddress(String text) {
+		return VALID_EMAIL_ADDRESS_REGEX.matcher(text).find();
 	}
 }

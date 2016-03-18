@@ -2,4 +2,8 @@
 
 @mixin login-dialog {
   @include valo-2;
+  
+  #email.v-text-field .v-text-field__input  {
+  	width: 15em;
+  }
 }
