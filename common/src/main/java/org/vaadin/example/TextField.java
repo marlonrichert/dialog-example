@@ -24,11 +24,17 @@ public class TextField extends CssLayout {
 	private com.vaadin.ui.TextField input;
 
 	public TextField(String label, ModifierStyle... styles) {
-		addComponent(new Image(new ThemeResource("star_12x11.png")).setElementStyle(ICON));
+		this(label, null, styles);
+	}
+
+	public TextField(String label, ThemeResource icon, ModifierStyle... styles) {
+		if (icon != null) {
+			addComponent(new Image(icon).setElementStyle(ICON));
+		}
 		addComponent(input = new TextInput(label).setElementStyle(INPUT));
 
 		input.addTextChangeListener(event -> notifyTextChangeListeners(event));
-		
+
 		setBlockStyle(BLOCK_STYLE);
 		addModifierStyles(styles);
 	}

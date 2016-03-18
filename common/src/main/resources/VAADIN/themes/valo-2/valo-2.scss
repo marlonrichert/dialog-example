@@ -30,13 +30,16 @@
   }
   
   .v-text-field__input {
-	padding-left: 27px;
   	flex-grow: 1;
   	flex-shrink: 1;
   	width: 0;
   	
   	&.v-textfield-focus {
   	  z-index: 1;
+  	}
+  	
+  .v-text-field__icon ~ .v-text-field__input {
+  	  padding-left: 27px;
   	}
   }
 

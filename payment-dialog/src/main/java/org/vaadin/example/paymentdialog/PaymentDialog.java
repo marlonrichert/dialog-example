@@ -24,7 +24,8 @@ import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CheckBox;
 
 public class PaymentDialog extends Dialog {
-	public static final String PAY_CAPTION = "Pay %s";
+	private static final String PAY_CAPTION = "Pay %s";
+	private static final ThemeResource STAR_ICON = new ThemeResource("star_12x11.png");
 
 	private TextField email;
 	private TextField cardNumber;
@@ -44,17 +45,19 @@ public class PaymentDialog extends Dialog {
 					{
 						add(new Header("September golf trip", "Robert Trent Jones Golf Trail"));
 						add(new Layout(VERTICAL, PADDED) {
+
 							{
-								add(email = new TextField("Email", REQUIRED_HIDDEN));
+								add(email = new TextField("Email", STAR_ICON, REQUIRED_HIDDEN));
 								space();
 								add(new Layout(VERTICAL) {
 									{
-										add(cardNumber = new TextField("Card number", REQUIRED_HIDDEN, SECTION_BOTTOM));
+										add(cardNumber = new TextField("Card number", STAR_ICON, REQUIRED_HIDDEN,
+												SECTION_BOTTOM));
 										add(new Layout(HORIZONTAL) {
 											{
-												add(mmyy = new TextField("MM / YY", REQUIRED_HIDDEN, SECTION_TOP,
-														SECTION_RIGHT));
-												add(cvc = new TextField("CVC", REQUIRED_HIDDEN, SECTION_TOP,
+												add(mmyy = new TextField("MM / YY", STAR_ICON, REQUIRED_HIDDEN,
+														SECTION_TOP, SECTION_RIGHT));
+												add(cvc = new TextField("CVC", STAR_ICON, REQUIRED_HIDDEN, SECTION_TOP,
 														SECTION_LEFT));
 											}
 										});
