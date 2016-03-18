@@ -14,28 +14,13 @@ import com.vaadin.ui.VerticalLayout;
 
 @Theme("login-dialog")
 public class LoginUI extends UI {
-
-	@Override
-	protected void init(VaadinRequest vaadinRequest) {
-		final VerticalLayout layout = new VerticalLayout();
-
-		final TextField name = new TextField();
-		name.setCaption("Type your name here:");
-
-		Button button = new Button("Click Me");
-		button.addClickListener(e -> {
-			layout.addComponent(new Label("Thanks " + name.getValue() + ", it works!"));
-		});
-
-		layout.addComponents(name, button);
-		layout.setMargin(true);
-		layout.setSpacing(true);
-
-		setContent(layout);
-	}
-
-	@WebServlet(urlPatterns = "/*", name = "LoginUIServlet", asyncSupported = true)
+	@WebServlet(urlPatterns = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(ui = LoginUI.class, productionMode = false)
 	public static class LoginUIServlet extends VaadinServlet {
+	}
+
+	@Override
+	protected void init(VaadinRequest request) {
+		new Presenter(this);
 	}
 }

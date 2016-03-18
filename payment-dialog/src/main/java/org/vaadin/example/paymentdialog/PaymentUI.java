@@ -7,11 +7,10 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 
-@SuppressWarnings("serial")
 @Theme("payment-dialog")
 public class PaymentUI extends com.vaadin.ui.UI {
 	@WebServlet(value = "/*", asyncSupported = true)
-	@VaadinServletConfiguration(productionMode = false, ui = PaymentUI.class)
+	@VaadinServletConfiguration(ui = PaymentUI.class, productionMode = false)
 	public static class Servlet extends VaadinServlet {
 	}
 
