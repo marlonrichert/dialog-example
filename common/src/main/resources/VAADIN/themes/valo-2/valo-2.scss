@@ -15,6 +15,11 @@
   .v-csslayout {
   	position: relative;
   }
+  
+  .v-button {
+  	animation-duration: 250ms;
+	animation-name: slidein;
+  }
 
   .v-text-field {
   	position: relative;
@@ -33,12 +38,15 @@
   	flex-grow: 1;
   	flex-shrink: 1;
   	width: 0;
+  	transition: height 250ms;
+	animation-duration: 250ms;
+	animation-name: slidein;
   	
   	&.v-textfield-focus {
   	  z-index: 1;
   	}
   	
-  .v-text-field__icon ~ .v-text-field__input {
+    .v-text-field__icon ~ .v-text-field__input {
   	  padding-left: 27px;
   	}
   }

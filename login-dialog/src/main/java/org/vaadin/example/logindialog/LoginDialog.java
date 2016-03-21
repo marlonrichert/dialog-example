@@ -2,7 +2,7 @@ package org.vaadin.example.logindialog;
 
 import static org.vaadin.example.Button.PRIMARY;
 import static org.vaadin.example.Layout.VERTICAL;
-import static org.vaadin.example.TextField.REQUIRED_HIDDEN;
+import static org.vaadin.example.TextField.PASSWORD;
 
 import java.util.regex.Pattern;
 
@@ -31,9 +31,9 @@ public class LoginDialog extends Dialog {
 				add(new Header("Log in"));
 				add(new Layout(VERTICAL, PADDED) {
 					{
-						add(email = new TextField("Email", REQUIRED_HIDDEN));
+						add(email = new TextField("Email"));
 						space();
-						add(password = new TextField("Password", REQUIRED_HIDDEN));
+						add(password = new TextField("Password", PASSWORD));
 						space();
 						add(submit = new Button("Submit", listener, PRIMARY));
 					}

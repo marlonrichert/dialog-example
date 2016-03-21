@@ -14,11 +14,12 @@ public class TextField extends CssLayout {
 	private static final ElementStyle ICON = new ElementStyle(BLOCK_STYLE, "icon");
 	private static final ElementStyle INPUT = new ElementStyle(BLOCK_STYLE, "input");
 
+	public static final ModifierStyle PASSWORD = new ModifierStyle(BLOCK_STYLE, "password");
+	public static final ModifierStyle REQUIRED_HIDDEN = new ModifierStyle(BLOCK_STYLE, "required-hidden");
 	public static final ModifierStyle SECTION_TOP = new ModifierStyle(BLOCK_STYLE, "section-top");
 	public static final ModifierStyle SECTION_RIGHT = new ModifierStyle(BLOCK_STYLE, "section-right");
 	public static final ModifierStyle SECTION_BOTTOM = new ModifierStyle(BLOCK_STYLE, "section-bottom");
 	public static final ModifierStyle SECTION_LEFT = new ModifierStyle(BLOCK_STYLE, "section-left");
-	public static final ModifierStyle REQUIRED_HIDDEN = new ModifierStyle(BLOCK_STYLE, "required-hidden");
 
 	private Set<TextChangeListener> listeners = new HashSet<>();
 	private com.vaadin.ui.TextField input;
