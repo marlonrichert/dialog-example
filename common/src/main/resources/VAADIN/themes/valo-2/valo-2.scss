@@ -17,8 +17,13 @@
   }
   
   .v-button {
-  	animation-duration: 250ms;
-	animation-name: slidein;
+  	transition: all 250ms;
+  }
+  
+  .v-button--hidden {
+  	height: 0;
+  	overflow: hidden;
+  	opacity: 0;
   }
 
   .v-text-field {
@@ -38,9 +43,7 @@
   	flex-grow: 1;
   	flex-shrink: 1;
   	width: 0;
-  	transition: height 250ms;
-	animation-duration: 250ms;
-	animation-name: slidein;
+  	transition: all 250ms;
   	
   	&.v-textfield-focus {
   	  z-index: 1;
@@ -49,6 +52,12 @@
     .v-text-field__icon ~ .v-text-field__input {
   	  padding-left: 27px;
   	}
+  }
+  
+  .v-text-field--hidden .v-text-field__input {
+  	height: 0;
+  	overflow: hidden;
+  	opacity: 0;
   }
 
   .v-text-field--required-hidden .v-required-field-indicator {

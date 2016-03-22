@@ -33,23 +33,33 @@ public class LoginDialog extends Dialog {
 					{
 						add(email = new TextField("Email"));
 						space();
-						add(password = new TextField("Password", PASSWORD));
+						add(password = new TextField("Password", PASSWORD, TextField.HIDDEN));
 						space();
-						add(submit = new Button("Submit", listener, PRIMARY));
+						add(submit = new Button("Submit", listener, PRIMARY, Button.HIDDEN));
 					}
-
 				});
-
 			}
 		});
 
 		email.setId("email");
 
-		password.setVisible(false);
-		email.addTextChangeListener(event -> password.setVisible(validEmailAddress(event.getText())));
+//		password.setVisible(false);
+		email.addTextChangeListener(event -> {
+			if (validEmailAddress(event.getText())) {
+				password.removeModifierStyle(TextField.HIDDEN);
+			} else {
+				password.addModifierStyle(TextField.HIDDEN);
+			}
+		});
 		
-		submit.setVisible(false);
-		password.addTextChangeListener(event -> submit.setVisible(!event.getText().isEmpty()));
+//		submit.setVisible(false);
+		password.addTextChangeListener(event -> {
+			if(!event.getText().isEmpty()) {
+				submit.removeModifierStyle(Button.HIDDEN);
+			} else {
+				submit.addModifierStyle(Button.HIDDEN);
+			}
+		});
 	}
 
 	private boolean validEmailAddress(String text) {

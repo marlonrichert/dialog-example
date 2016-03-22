@@ -20,6 +20,7 @@ public class TextField extends CssLayout {
 	public static final ModifierStyle SECTION_RIGHT = new ModifierStyle(BLOCK_STYLE, "section-right");
 	public static final ModifierStyle SECTION_BOTTOM = new ModifierStyle(BLOCK_STYLE, "section-bottom");
 	public static final ModifierStyle SECTION_LEFT = new ModifierStyle(BLOCK_STYLE, "section-left");
+	public static final ModifierStyle HIDDEN = new ModifierStyle(BLOCK_STYLE, "hidden");
 
 	private Set<TextChangeListener> listeners = new HashSet<>();
 	private com.vaadin.ui.TextField input;
@@ -53,6 +54,10 @@ public class TextField extends CssLayout {
 
 	public void addModifierStyle(ModifierStyle style) {
 		addStyleName("" + style);
+	}
+
+	public void removeModifierStyle(ModifierStyle style) {
+		removeStyleName("" + style);
 	}
 
 	public String getValue() {

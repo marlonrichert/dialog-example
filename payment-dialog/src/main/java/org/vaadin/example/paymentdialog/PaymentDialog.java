@@ -68,13 +68,10 @@ public class PaymentDialog extends Dialog {
 								space(2);
 								add(payControl = new Button(PAY_CAPTION, listener, DISABLED, PRIMARY));
 							}
-
 						});
-
 					}
 				});
 			}
-
 		});
 
 		setRequiredFields(email, cardNumber, mmyy, cvc);

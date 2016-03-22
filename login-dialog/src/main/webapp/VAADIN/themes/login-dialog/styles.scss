@@ -4,16 +4,6 @@
 // This file prefixes all rules with the theme name to avoid causing conflicts with other themes.
 // The actual styles should be defined in login-dialog.scss
 
-@keyframes slidein {
-  from {
-    height: 0;
-  }
-
-  to {
-    height: 37px;
-  }
-}
-
 .login-dialog {
   @include addons;
   @include login-dialog;
