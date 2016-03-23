@@ -14,6 +14,7 @@ import org.vaadin.example.TextChangeListener;
 import org.vaadin.example.TextField;
 import org.vaadin.example.ValueChangeListener;
 
+import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 public class LoginDialog extends Dialog {
@@ -45,19 +46,18 @@ public class LoginDialog extends Dialog {
 
 		email.setId("email");
 
-		TextChangeListener.bind(event -> {
-			email.setValue(event.getText());
-		}, email);
-		TextChangeListener.bind(event -> {
-			password.setValue(event.getText());
-		}, password);
-
-		ValueChangeListener.bind(event -> {
+		TextChangeListener.when(email).call(event -> {
+			commit(event);
 			password.setVisible(validEmailAddress(email.getValue()));
-		}, email);
-		ValueChangeListener.bind(event -> {
+		});
+		TextChangeListener.when(email, password).call(event -> {
+			commit(event);
 			submit.setVisible(validEmailAddress(email.getValue()) && !password.isEmpty());
-		}, email, password);
+		});
+	}
+
+	private static void commit(TextChangeEvent event) {
+		((TextField) event.getSource()).setValue(event.getText());
 	}
 
 	private boolean validEmailAddress(String text) {

@@ -20,6 +20,7 @@ import org.vaadin.example.TextChangeListener;
 import org.vaadin.example.TextField;
 import org.vaadin.example.ValueChangeListener;
 
+import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CheckBox;
@@ -73,13 +74,22 @@ public class PaymentDialog extends Dialog {
 			}
 		});
 		
-		TextField[] requiredFields = { email, cardNumber, mmyy, cvc };
+		setRequiredFields(email, cardNumber, mmyy, cvc);
+	}
+
+	private void setRequiredFields(TextField... fields) {
 		TextChangeListener.bind(event -> {
-			((TextField) event.getSource()).setValue(event.getText());
-		}, requiredFields);
-		ValueChangeListener.bind(event -> {
-			payControl.setEnabled(Stream.of(requiredFields).allMatch(f -> !f.isEmpty()));
-		}, requiredFields);
+			commit(event);
+			payControl.setEnabled(noEmptyFields(fields));
+		}, fields);
+	}
+
+	private static void commit(TextChangeEvent event) {
+		((TextField) event.getSource()).setValue(event.getText());
+	}
+
+	private static boolean noEmptyFields(TextField... fields) {
+		return Stream.of(fields).allMatch(f -> !f.isEmpty());
 	}
 
 	public void setPayAmount(String dollars) {

@@ -10,6 +10,7 @@ import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
 import com.vaadin.server.ThemeResource;
+import com.vaadin.ui.AbstractTextField.TextChangeEventMode;
 import com.vaadin.ui.CssLayout;
 
 public class TextField extends CssLayout {
@@ -39,6 +40,7 @@ public class TextField extends CssLayout {
 		}
 		addComponent(input = new TextInput(label).setElementStyle(INPUT));
 
+		input.setTextChangeEventMode(TextChangeEventMode.EAGER);
 		input.addTextChangeListener(event -> notifyTextChangeListeners(event));
 		input.addValueChangeListener(event -> notifyValueChangeListeners(event));
 
