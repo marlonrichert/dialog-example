@@ -10,7 +10,9 @@ import org.vaadin.example.Button;
 import org.vaadin.example.Dialog;
 import org.vaadin.example.Header;
 import org.vaadin.example.Layout;
+import org.vaadin.example.TextChangeListener;
 import org.vaadin.example.TextField;
+import org.vaadin.example.ValueChangeListener;
 
 import com.vaadin.ui.Button.ClickListener;
 
@@ -43,22 +45,19 @@ public class LoginDialog extends Dialog {
 
 		email.setId("email");
 
-		email.addTextChangeListener(event -> {
-			if (validEmailAddress(event.getText())) {
-				password.removeModifierStyle(TextField.HIDDEN);
-			} else {
-				password.addModifierStyle(TextField.HIDDEN);
-				submit.addModifierStyle(Button.HIDDEN);
-			}
-		});
-		
-		password.addTextChangeListener(event -> {
-			if(!event.getText().isEmpty()) {
-				submit.removeModifierStyle(Button.HIDDEN);
-			} else {
-				submit.addModifierStyle(Button.HIDDEN);
-			}
-		});
+		TextChangeListener.bind(event -> {
+			email.setValue(event.getText());
+		}, email);
+		TextChangeListener.bind(event -> {
+			password.setValue(event.getText());
+		}, password);
+
+		ValueChangeListener.bind(event -> {
+			password.setVisible(validEmailAddress(email.getValue()));
+		}, email);
+		ValueChangeListener.bind(event -> {
+			submit.setVisible(validEmailAddress(email.getValue()) && !password.isEmpty());
+		}, email, password);
 	}
 
 	private boolean validEmailAddress(String text) {

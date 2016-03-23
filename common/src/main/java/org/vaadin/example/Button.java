@@ -27,4 +27,13 @@ public final class Button extends com.vaadin.ui.Button {
 	public void addModifierStyle(String style) {
 		addStyleName(style);
 	}
+	
+	@Override
+	public void setVisible(boolean visible) {
+		if (visible) {
+			removeModifierStyle(HIDDEN);
+		} else {
+			addModifierStyle(HIDDEN);
+		}
+	}
 }

@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import com.vaadin.data.Property;
+import com.vaadin.data.Property.ValueChangeEvent;
+import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
 import com.vaadin.server.ThemeResource;
@@ -22,7 +25,8 @@ public class TextField extends CssLayout {
 	public static final ModifierStyle SECTION_LEFT = new ModifierStyle(BLOCK_STYLE, "section-left");
 	public static final ModifierStyle HIDDEN = new ModifierStyle(BLOCK_STYLE, "hidden");
 
-	private Set<TextChangeListener> listeners = new HashSet<>();
+	private Set<TextChangeListener> textChangeListeners = new HashSet<>();
+	private Set<ValueChangeListener> valueChangeListeners = new HashSet<>();
 	private com.vaadin.ui.TextField input;
 
 	public TextField(String label, ModifierStyle... styles) {
@@ -36,6 +40,7 @@ public class TextField extends CssLayout {
 		addComponent(input = new TextInput(label).setElementStyle(INPUT));
 
 		input.addTextChangeListener(event -> notifyTextChangeListeners(event));
+		input.addValueChangeListener(event -> notifyValueChangeListeners(event));
 
 		setBlockStyle(BLOCK_STYLE);
 		addModifierStyles(styles);
@@ -59,9 +64,22 @@ public class TextField extends CssLayout {
 	public void removeModifierStyle(ModifierStyle style) {
 		removeStyleName("" + style);
 	}
+	
+	@Override
+	public void setVisible(boolean visible) {
+		if (visible) {
+			removeModifierStyle(HIDDEN);
+		} else {
+			addModifierStyle(HIDDEN);
+		}
+	}
 
 	public String getValue() {
 		return input.getValue();
+	}
+
+	public void setValue(String value) {
+		input.setValue(value);
 	}
 
 	public boolean isEmpty() {
@@ -69,15 +87,15 @@ public class TextField extends CssLayout {
 	}
 
 	public void addTextChangeListener(TextChangeListener listener) {
-		listeners.add(listener);
+		textChangeListeners.add(listener);
 	}
 
 	public void removeTextChangeListener(TextChangeListener listener) {
-		listeners.remove(listener);
+		textChangeListeners.remove(listener);
 	}
 
 	private void notifyTextChangeListeners(TextChangeEvent event) {
-		listeners.stream().forEach(l -> l.textChange(new TextChangeEvent(TextField.this) {
+		textChangeListeners.stream().forEach(l -> l.textChange(new TextChangeEvent(TextField.this) {
 
 			@Override
 			public String getText() {
@@ -87,6 +105,24 @@ public class TextField extends CssLayout {
 			@Override
 			public int getCursorPosition() {
 				return event.getCursorPosition();
+			}
+		}));
+	}
+
+	public void addValueChangeListener(ValueChangeListener listener) {
+		valueChangeListeners.add(listener);
+	}
+
+	public void removeValueChangeListener(ValueChangeListener listener) {
+		valueChangeListeners.remove(listener);
+	}
+
+	private void notifyValueChangeListeners(ValueChangeEvent event) {
+		valueChangeListeners.stream().forEach(l -> l.valueChange(new ValueChangeEvent() {
+
+			@Override
+			public Property getProperty() {
+				return event.getProperty();
 			}
 		}));
 	}
