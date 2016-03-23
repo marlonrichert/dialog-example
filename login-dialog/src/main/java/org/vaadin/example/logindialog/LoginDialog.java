@@ -43,16 +43,15 @@ public class LoginDialog extends Dialog {
 
 		email.setId("email");
 
-//		password.setVisible(false);
 		email.addTextChangeListener(event -> {
 			if (validEmailAddress(event.getText())) {
 				password.removeModifierStyle(TextField.HIDDEN);
 			} else {
 				password.addModifierStyle(TextField.HIDDEN);
+				submit.addModifierStyle(Button.HIDDEN);
 			}
 		});
 		
-//		submit.setVisible(false);
 		password.addTextChangeListener(event -> {
 			if(!event.getText().isEmpty()) {
 				submit.removeModifierStyle(Button.HIDDEN);

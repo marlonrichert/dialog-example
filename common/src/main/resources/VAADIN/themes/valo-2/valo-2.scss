@@ -48,12 +48,12 @@
   	&.v-textfield-focus {
   	  z-index: 1;
   	}
-  	
-    .v-text-field__icon ~ .v-text-field__input {
-  	  padding-left: 27px;
-  	}
   }
   
+  .v-text-field__icon ~ .v-text-field__input {
+	padding-left: 27px;
+  }
+
   .v-text-field--hidden .v-text-field__input {
   	height: 0;
   	overflow: hidden;
