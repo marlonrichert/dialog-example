@@ -12,7 +12,6 @@ import org.vaadin.example.Header;
 import org.vaadin.example.Layout;
 import org.vaadin.example.TextChangeListener;
 import org.vaadin.example.TextField;
-import org.vaadin.example.ValueChangeListener;
 
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.ui.Button.ClickListener;
